@@ -1,0 +1,125 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    /* Spectra.ai Dark Theme - Glass & Neon */
+    --background: 229 30% 7%;
+    --foreground: 210 40% 98%;
+
+    --card: 229 25% 10%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 229 30% 8%;
+    --popover-foreground: 210 40% 98%;
+
+    /* Primary - Electric Purple */
+    --primary: 271 91% 65%;
+    --primary-foreground: 210 40% 98%;
+    
+    /* Secondary - Deep Glass */
+    --secondary: 229 25% 15%;
+    --secondary-foreground: 210 40% 98%;
+
+    /* Muted - Subtle Glass */
+    --muted: 229 20% 18%;
+    --muted-foreground: 215 20% 65%;
+
+    /* Accent - Neon Cyan */
+    --accent: 187 100% 65%;
+    --accent-foreground: 229 30% 7%;
+
+    /* Destructive - Neon Pink */
+    --destructive: 340 100% 65%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 229 25% 20%;
+    --input: 229 25% 15%;
+    --ring: 271 91% 65%;
+
+    --radius: 1.25rem;
+
+    /* Custom tokens */
+    --glass-bg: rgba(15, 20, 45, 0.6);
+    --glass-border: rgba(255, 255, 255, 0.08);
+    --neon-glow: 271 91% 65%;
+    --neon-glow-accent: 187 100% 65%;
+    
+    /* Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(271 91% 65% / 0.8), hsl(187 100% 65% / 0.8));
+    --gradient-subtle: linear-gradient(180deg, hsl(229 30% 7%), hsl(229 30% 10%));
+    --gradient-hero: linear-gradient(135deg, hsl(271 91% 25% / 0.4), hsl(187 100% 25% / 0.3));
+    
+    /* Shadows */
+    --shadow-neon: 0 0 40px hsl(271 91% 65% / 0.3);
+    --shadow-neon-accent: 0 0 40px hsl(187 100% 65% / 0.3);
+    --shadow-glass: 0 8px 32px rgba(0, 0, 0, 0.4);
+    
+    /* Animations */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-spring: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "kern" 1, "liga" 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+@layer utilities {
+  .glass-panel {
+    background: rgba(15, 20, 45, 0.6);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+  }
+  
+  .neon-glow {
+    box-shadow: 0 0 20px hsl(var(--primary) / 0.4), 0 0 40px hsl(var(--primary) / 0.2);
+  }
+  
+  .neon-glow-accent {
+    box-shadow: 0 0 20px hsl(var(--accent) / 0.4), 0 0 40px hsl(var(--accent) / 0.2);
+  }
+  
+  .text-gradient {
+    background: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--accent)));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+  
+  .animate-pulse-slow {
+    animation: pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+  
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-20px);
+    }
+  }
+}
